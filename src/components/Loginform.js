@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, AlertIOS } from 'react-native';
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged } from './../actions';
+import { emailChanged, passwordChanged, loginUser } from './../actions';
 import Card from './../common/Card';
 import CardSection from './../common/CardSection';
 import Input from './../common/Input';
 import Button from './../common/Button';
+import Spinner from './../common/Spinner';
 
 class Loginform extends Component {
 
@@ -21,14 +22,27 @@ class Loginform extends Component {
 		this.props.passwordChanged(password);
 	}
 
+	
 
 	submitForm(){
-		console.log('asd');
+		const { email, password } = this.props;
+		this.props.loginUser({email, password});
+
 	}
 
+
+	showEitherButtonOrSpinner(){
+		if(this.props.loading){
+			return <Spinner  size={'small'}/>;
+		}
+		return <Button onPressedAction = {this.submitForm.bind(this)} title={'Login'}/>;
+	}
+
+	
 	render(){
 		return(
 			<Card>
+				<Text>{this.props.error}</Text>
 				<CardSection>
 					<Input 
 					placeholder={'something@mail.com'} 
@@ -45,7 +59,8 @@ class Loginform extends Component {
 							/>
 				</CardSection>
 
-				<Button onPressedAction = {this.submitForm.bind(this)} title={'Login'}/>
+				{this.showEitherButtonOrSpinner()}
+				
 			</Card>
 		);
 	}
@@ -53,10 +68,13 @@ class Loginform extends Component {
 
 
 function mapStateToProps(state){
+	console.log(state.auth);
 	return {
 		email: state.auth.email,
-		password: state.auth.password
+		password: state.auth.password,
+		error: state.auth.error,
+		loading: state.auth.loading,
 	};
 }
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged })(Loginform);
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(Loginform);

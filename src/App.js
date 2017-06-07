@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//text is not necessary in here. 
 import { Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';

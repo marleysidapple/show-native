@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import reducers from './reducers';
 import Header  from './common/Header';
-import Loginform  from './components/Loginform';
+//import Loginform  from './components/Loginform';
 
 //for navigation
 import Router from './Router';

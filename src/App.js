@@ -8,6 +8,9 @@ import reducers from './reducers';
 import Header  from './common/Header';
 import Loginform  from './components/Loginform';
 
+//for navigation
+import Router from './Router';
+
 
 
 const store = applyMiddleware(thunk, promise)(createStore);
@@ -19,12 +22,20 @@ class App extends Component{
 	}
 
 	render(){
+		/*
 		return(
 			<Provider store={store(reducers)}>
 				<View style={{flex: 1}}>
 					<Header headerText={'Login'}/>
 					<Loginform />
 				</View>
+			</Provider>
+		);
+		*/	
+
+		return(
+			<Provider store={store(reducers)}>
+				<Router />
 			</Provider>
 		);
 	}

@@ -13,8 +13,9 @@ class RouterComponent extends Component {
 	}
 
 	render(){
+		//passing style to scene using SceneStyle : global styling and gets applied to all the scenes
 		return(
-			<Router>
+			<Router sceneStyle={{paddingTop: 65}}>
 	 			<Scene key="login" component={Loginform} title={'Please Login'} />
 	 		</Router>
 		);

@@ -38,11 +38,17 @@ class Loginform extends Component {
 		return <Button onPressedAction = {this.submitForm.bind(this)} title={'Login'}/>;
 	}
 
+	showError(){
+		if(this.props.error){
+			return <Text>{this.props.error}</Text>;
+		}
+	}
+
 	
 	render(){
 		return(
 			<Card>
-				<Text>{this.props.error}</Text>
+				{this.showError()}
 				<CardSection>
 					<Input 
 					placeholder={'something@mail.com'} 

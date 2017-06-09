@@ -18,8 +18,13 @@ class RouterComponent extends Component {
 		//key could be anything
 		return(
 			<Router sceneStyle={{paddingTop: 65}}>
-	 			<Scene key="login" component={Loginform} title={'Please Login'} />
-	 			<Scene key="employeelist" component={Employeelist} title={'Employees'} />
+				<Scene key="auth">
+	 				<Scene key="login" component={Loginform} title={'Please Login'} />
+	 			</Scene>
+
+	 			<Scene key="main">
+	 				<Scene key="employeeList" component={Employeelist} title={'Employees'} />
+	 			</Scene>
 	 		</Router>
 		);
 	}
@@ -35,8 +40,6 @@ export default RouterComponent;
 * functional component
 *
 */
-
-
 // const RouterComponent = () => {
 // 	return(
 // 		<Router>
@@ -44,7 +47,6 @@ export default RouterComponent;
 //  		</Router>
 // 	);
 // }
-
 
 
 // export default RouterComponent;

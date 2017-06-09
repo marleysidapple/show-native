@@ -5,6 +5,8 @@ import { EMAIL_CHANGED,
 		LOGIN_USER
 	} from './types';
 
+import { Actions } from 'react-native-router-flux';
+
 import axios from 'axios';
 
 export function emailChanged(email){
@@ -35,6 +37,8 @@ export function loginUser({email, password}){
 					type: USER_LOGIN_SUCCESS,
 					payload: user
 				});
+				//Navigating user to the employeelist on successful login-
+				Actions.main();
 			})
 			.catch((error) => {
 				dispatch({

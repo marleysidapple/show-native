@@ -10,7 +10,7 @@ class CardSection extends Component {
 
 	render(){
 		return(
-				<View style={styles.cardSectionContainerStyle}>	
+				<View style={[styles.cardSectionContainerStyle, this.props.styles]}>	
 					{this.props.children}
 				</View>
 			);

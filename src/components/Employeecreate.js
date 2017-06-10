@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Picker } from 'react-native';
+import { View, Text, Picker, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { handleEmployeeFormUpdate } from './../actions/employee';
 import Card from './../common/Card';
@@ -47,7 +47,7 @@ class Employeecreate extends Component{
 					 	onValueChange={day => this.props.handleEmployeeFormUpdate({prop: 'shift', value: day})}
 					 	style={{flex: 1}}
 					 >
-					  {this.daysOfWeek().map(d => <Picker.Item label={d} value={d} />)}
+					  {this.daysOfWeek().map(d => <Picker.Item key={d} label={d} value={d} />)}
 					 
 					 </Picker>
 				</CardSection>
@@ -66,6 +66,15 @@ function mapStateToProps(state){
 		shift: state.employee.shift,
 	}
 }
+
+
+const styles = StyleSheet.create({
+	pickerLabelStyle: {
+		fontSize: 18,
+		paddingLeft: 20
+	}
+
+});
 
 
 export default connect(mapStateToProps, { handleEmployeeFormUpdate })(Employeecreate);

@@ -3,9 +3,10 @@
 
 
 import React, { Component } from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import Loginform from './components/Loginform';
 import Employeelist from './components/Employeelist';   //second screen
+import Employeecreate from './components/Employeecreate';   //second screen
 
 
 class RouterComponent extends Component {
@@ -23,7 +24,8 @@ class RouterComponent extends Component {
 	 			</Scene>
 
 	 			<Scene key="main">
-	 				<Scene key="employeeList" component={Employeelist} title={'Employees'} />
+	 				<Scene onRight = {() => Actions.addEmployee()} rightTitle='Add' key="employeeList" component={Employeelist} title={'Employees'} inital/>
+	 				<Scene key="addEmployee" component={Employeecreate} title={'Add Employee'} />
 	 			</Scene>
 	 		</Router>
 		);

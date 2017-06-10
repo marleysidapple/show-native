@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { handleEmployeeFormUpdate } from './../actions/employee';
 import Card from './../common/Card';
@@ -36,6 +36,18 @@ class Employeecreate extends Component{
 				</CardSection>
 
 				<CardSection>
+					 <Picker selectedValue={this.props.shift}
+					 	onValueChange={day => this.props.handleEmployeeFormUpdate({prop: 'shift', value: day})}
+					 	style={{flex: 1}}
+					 >
+					 	<Picker.Item label="Monday" value="Monday"/> 
+					 	<Picker.Item label="Tuesday" value="Tuesday"/> 
+					 	<Picker.Item label="Wednesday" value="Wednesday"/> 
+					 	<Picker.Item label="Thursday" value="Thursday"/> 
+					 	<Picker.Item label="Friday" value="Friday"/> 
+					 	<Picker.Item label="Saturday" value="Saturday"/> 
+					 	<Picker.Item label="Sunday" value="Sunday"/> 
+					 </Picker>
 				</CardSection>
 
 				

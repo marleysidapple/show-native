@@ -16,6 +16,12 @@ class Employeecreate extends Component{
 	}
 
 
+	daysOfWeek(){
+		const days = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		return days; 
+	}
+
+
 	render(){
 		return(
 			<Card>
@@ -36,17 +42,13 @@ class Employeecreate extends Component{
 				</CardSection>
 
 				<CardSection>
+					<Text>Shift</Text>
 					 <Picker selectedValue={this.props.shift}
 					 	onValueChange={day => this.props.handleEmployeeFormUpdate({prop: 'shift', value: day})}
 					 	style={{flex: 1}}
 					 >
-					 	<Picker.Item label="Monday" value="Monday"/> 
-					 	<Picker.Item label="Tuesday" value="Tuesday"/> 
-					 	<Picker.Item label="Wednesday" value="Wednesday"/> 
-					 	<Picker.Item label="Thursday" value="Thursday"/> 
-					 	<Picker.Item label="Friday" value="Friday"/> 
-					 	<Picker.Item label="Saturday" value="Saturday"/> 
-					 	<Picker.Item label="Sunday" value="Sunday"/> 
+					  {this.daysOfWeek().map(d => <Picker.Item label={d} value={d} />)}
+					 
 					 </Picker>
 				</CardSection>
 

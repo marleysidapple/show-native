@@ -2,7 +2,8 @@ import { EMAIL_CHANGED,
 		PASSWORD_CHANGED, 
 		USER_LOGIN_SUCCESS, 
 		USER_LOGIN_FAIL,
-		LOGIN_USER
+		LOGIN_USER,
+		GET_USER_DETAIL
 	} from './types';
 
 import { Actions } from 'react-native-router-flux';
@@ -47,4 +48,15 @@ export function loginUser({email, password}){
 				});
 			});
 		};
+}
+
+export function getUserDetail(token){
+	return (dispatch) => {
+		axios.get(`http://localhost:8000/api/v1/auth/user/${token}`).then(detail => {
+			dispatch({
+				type: GET_USER_DETAIL,
+				payload: detail
+			});
+		});
+	}
 }

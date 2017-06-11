@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Picker, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { handleEmployeeFormUpdate } from './../actions/employee';
+import { handleEmployeeFormUpdate, saveEmployeeDetail } from './../actions/employee';
 import Card from './../common/Card';
 import CardSection from './../common/CardSection';
 import Input from './../common/Input';
@@ -12,7 +12,12 @@ import Button from './../common/Button';
 class Employeecreate extends Component{
 
 	submitForm(){
-		console.log('asd');
+		const employee = {
+			name: this.props.name,
+			phone: this.props.phone,
+			shift: this.props.shift
+		};
+		this.props.saveEmployeeDetail(employee);
 	}
 
 
@@ -77,4 +82,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, { handleEmployeeFormUpdate })(Employeecreate);
+export default connect(mapStateToProps, { handleEmployeeFormUpdate, saveEmployeeDetail })(Employeecreate);

@@ -20,6 +20,7 @@ class Employeelist extends Component {
 	render(){
 		return(
 			<View>
+				<Text></Text>
 				<Text>Employee List</Text>
 				<Text>Employee List</Text>
 				<Text>Employee List</Text>
@@ -31,7 +32,7 @@ class Employeelist extends Component {
 }
 
 function mapStateToProps(state){
-	//console.log();
+	console.log(state.auth.user);
 	return {
 		token: state.auth.token,
 		//detail: state.user.detail

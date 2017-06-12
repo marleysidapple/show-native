@@ -74,7 +74,7 @@ class Loginform extends Component {
 
 
 function mapStateToProps(state){
-	console.log(state.auth);
+	//console.log(state.auth);
 	return {
 		email: state.auth.email,
 		password: state.auth.password,

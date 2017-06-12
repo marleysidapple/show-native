@@ -20,7 +20,7 @@ export default function(state=INITIAL_STATE, action){
 			return { ...state, loading: true, error: '' };
 
 		case USER_LOGIN_SUCCESS:
-			return {...state, user: action.payload, error: '', loading: false, email: '', password:'' };
+			return {...state, user: action.payload.data, error: '', loading: false, email: '', password:'' };
 
 		case USER_LOGIN_FAIL:
 			return { ...state, error: action.payload, password: '', loading: false };

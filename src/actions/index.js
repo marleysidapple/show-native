@@ -34,10 +34,16 @@ export function loginUser({email, password}){
 
 			axios.post('http://localhost:8000/api/v1/auth/login', {email, password})
 			.then(user => {
-				dispatch({
-					type: USER_LOGIN_SUCCESS,
-					payload: user
+
+				//user.data.token
+				axios.get(`http://localhost:8000/api/v1/auth/user/${user.data.token}`).then(detail => {
+					dispatch({
+						type: USER_LOGIN_SUCCESS,
+						payload: detail
+					});
 				});
+
+				
 				//Navigating user to the employeelist on successful login-
 				Actions.main();
 			})

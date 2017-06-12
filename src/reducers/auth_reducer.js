@@ -5,7 +5,7 @@ import { EMAIL_CHANGED,
 		LOGIN_USER,
 		 } from './../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', token: null, error: '', loading: false};
+const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false};
 
 
 export default function(state=INITIAL_STATE, action){
@@ -20,7 +20,7 @@ export default function(state=INITIAL_STATE, action){
 			return { ...state, loading: true, error: '' };
 
 		case USER_LOGIN_SUCCESS:
-			return {...state, token: action.payload.data, error: '', loading: false, email: '', password:'' };
+			return {...state, user: action.payload, error: '', loading: false, email: '', password:'' };
 
 		case USER_LOGIN_FAIL:
 			return { ...state, error: action.payload, password: '', loading: false };

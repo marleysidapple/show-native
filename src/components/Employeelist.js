@@ -22,10 +22,6 @@ class Employeelist extends Component {
 			<View>
 				<Text></Text>
 				<Text>Employee List</Text>
-				<Text>Employee List</Text>
-				<Text>Employee List</Text>
-				<Text>Employee List</Text>
-				<Text>Employee List</Text>
 			</View>
 		);
 	}

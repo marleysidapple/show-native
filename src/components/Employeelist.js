@@ -10,17 +10,27 @@ class Employeelist extends Component {
 		super(props);
 	}
 
-	componentWillMount(){
+
+
+	/*	
+	componentWillReceiveProps(nextProps){
+		//console.log(this.detail.fullname);
+	}
+	*/
+
+
+	//componentWillUpdate(){
+		//console.log(this.props.detail);
 		//console.log(this.props.token);
 		//this.props.getUserDetail(this.props.token);
 		//console.log(this.props.detail);
-	}
+	//}
+
 
 
 	render(){
 		return(
 			<View>
-				<Text></Text>
 				<Text>Employee List</Text>
 			</View>
 		);
@@ -28,9 +38,10 @@ class Employeelist extends Component {
 }
 
 function mapStateToProps(state){
-	console.log(state.auth.user);
+	//console.log(state.auth.user);
 	return {
 		token: state.auth.token,
+		detail: state.auth.user
 		//detail: state.user.detail
 	}
 }

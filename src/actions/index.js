@@ -41,11 +41,13 @@ export function loginUser({email, password}){
 						type: USER_LOGIN_SUCCESS,
 						payload: detail
 					});
+
+					//success
+					//Navigating user to the employeelist on successful login-
+					Actions.main();
 				});
 
 				
-				//Navigating user to the employeelist on successful login-
-				Actions.main();
 			})
 			.catch((error) => {
 				dispatch({
@@ -56,6 +58,7 @@ export function loginUser({email, password}){
 		};
 }
 
+/*
 export function getUserDetail(token){
 	return (dispatch) => {
 		axios.get(`http://localhost:8000/api/v1/auth/user/${token}`).then(detail => {
@@ -66,3 +69,4 @@ export function getUserDetail(token){
 		});
 	}
 }
+*/

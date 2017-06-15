@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { getUserDetail } from './../actions/index';
+import { loginUser } from './../actions/index';
 
 
 class Employeelist extends Component {
@@ -12,25 +12,16 @@ class Employeelist extends Component {
 
 
 
-	/*	
-	componentWillReceiveProps(nextProps){
-		//console.log(this.detail.fullname);
+		
+	componentWillUpdate(nextProps){
+		
 	}
-	*/
-
-
-	//componentWillUpdate(){
-		//console.log(this.props.detail);
-		//console.log(this.props.token);
-		//this.props.getUserDetail(this.props.token);
-		//console.log(this.props.detail);
-	//}
-
-
+	
 
 	render(){
 		return(
 			<View>
+				<Text>{this.props.detail.fullname}</Text>
 				<Text>Employee List</Text>
 			</View>
 		);
@@ -38,7 +29,6 @@ class Employeelist extends Component {
 }
 
 function mapStateToProps(state){
-	//console.log(state.auth.user);
 	return {
 		token: state.auth.token,
 		detail: state.auth.user
@@ -46,4 +36,4 @@ function mapStateToProps(state){
 	}
 }
 
-export default connect(mapStateToProps, { getUserDetail })(Employeelist);
+export default connect(mapStateToProps, { loginUser })(Employeelist);

@@ -9,13 +9,6 @@ class Employeelist extends Component {
 	constructor(props){
 		super(props);
 	}
-
-
-
-		
-	componentWillUpdate(nextProps){
-		
-	}
 	
 
 	render(){
@@ -30,9 +23,8 @@ class Employeelist extends Component {
 
 function mapStateToProps(state){
 	return {
-		token: state.auth.token,
+		//token: state.auth.token,
 		detail: state.auth.user
-		//detail: state.user.detail
 	}
 }
 

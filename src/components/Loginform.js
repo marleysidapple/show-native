@@ -58,7 +58,7 @@ class Loginform extends Component {
 				</CardSection>
 
 				<CardSection>
-					<Input placeholder={'password'} 
+					<Input placeholder={'********'} 
 							secureTextEntry={true}
 							onChangeText={this.onPasswordChange.bind(this)}
 							value={this.props.password}

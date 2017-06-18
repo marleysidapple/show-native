@@ -15,7 +15,7 @@ class Employeecreate extends Component{
 		const employee = {
 			name: this.props.name,
 			phone: this.props.phone,
-			shift: this.props.shift
+			shift: this.props.shift || 'Mon'  //if the shift is not set, then set to Mon by default because picker doesnot set value at first
 		};
 		this.props.saveEmployeeDetail(employee);
 	}

@@ -1,4 +1,4 @@
-import { HANDLE_EMPLOYEE_FORM_UPDATE, EMPLOYEE_CREATE_SUCCESS } from './types';
+import { HANDLE_EMPLOYEE_FORM_UPDATE, EMPLOYEE_CREATE_SUCCESS, FETCH_EMPLOYEE_LIST } from './types';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -23,5 +23,19 @@ export function saveEmployeeDetail(employee){
 			//type: reset will disable the back button
 			Actions.employeeList({type: 'reset'});
 		});
+	}
+}
+
+
+export function getEmployeeList(){
+
+	return (dispatch) => {
+		//also simultaneously, get the list of employee as well
+				axios.get('http://localhost:8000/api/v1/employee/list').then((em) => {
+					dispatch({
+						type: FETCH_EMPLOYEE_LIST,
+						payload: em.data
+					});
+				});
 	}
 }

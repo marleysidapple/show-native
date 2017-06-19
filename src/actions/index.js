@@ -42,6 +42,7 @@ export function loginUser({email, password}){
 						payload: detail
 					});
 
+
 					//success
 					//Navigating user to the employeelist on successful login-
 					Actions.main();

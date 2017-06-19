@@ -2,13 +2,13 @@ import {
 	FETCH_EMPLOYEE_LIST
 } from './../actions/types';
 
-const INITIAL_STATE = {all: []};
+const INITIAL_STATE = {};
 
 export default function(state=INITIAL_STATE, action){
 	switch(action.type){
 		
 		case FETCH_EMPLOYEE_LIST:
-			return { ...state, all: action.payload};
+			return action.payload;
 
 		default:
 			return state;

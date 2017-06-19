@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ListView, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { loginUser } from './../actions/index';
 import { getEmployeeList } from './../actions/employee';
+import _ from 'lodash';
 
 
 class Employeelist extends Component {
@@ -15,6 +16,12 @@ class Employeelist extends Component {
 		this.props.getEmployeeList();
 	}
 
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps.employee);
+		//this.createDataSource(nextProps.employee);
+	}
+
+	
 
 	
 
@@ -29,8 +36,8 @@ class Employeelist extends Component {
 }
 
 function mapStateToProps(state){
-	console.log(state.employee_list);
 	return {
+		employee: state.employee_list,
 		//token: state.auth.token,
 		detail: state.auth.user
 	}

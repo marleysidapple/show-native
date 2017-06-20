@@ -18,19 +18,13 @@ class Employeelist extends Component {
 
 	componentWillReceiveProps(nextProps){
 		console.log(nextProps.employee);
-		//this.createDataSource(nextProps.employee);
 	}
 
 	
 
-	
-
 	render(){
-		return(
-			<View>
-				<Text>{this.props.detail.fullname}</Text>
-				<Text>Employee List</Text>
-			</View>
+		return (
+			<Text>hello</Text>
 		);
 	}
 }

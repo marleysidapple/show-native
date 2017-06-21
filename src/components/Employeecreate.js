@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { handleEmployeeFormUpdate, saveEmployeeDetail } from './../actions/employee';
 import Card from './../common/Card';
 import CardSection from './../common/CardSection';
+import Employeeform from './Employeeform';
 import Input from './../common/Input';
 import Button from './../common/Button';
 
@@ -28,36 +29,10 @@ class Employeecreate extends Component{
 
 
 	render(){
+		//console.log(this.props.employee);
 		return(
 			<Card>
-				<CardSection>
-				<Input 
-					placeholder={'Employee Name'} 
-					value={this.props.name}
-					onChangeText={text => this.props.handleEmployeeFormUpdate({prop: 'name', value: text})}
-					/>
-				</CardSection>
-
-				<CardSection>
-				<Input 
-					placeholder={'Phone: 0019381923'} 
-					value={this.props.phone}
-					onChangeText={text => this.props.handleEmployeeFormUpdate({prop: 'phone', value: text})}
-					/>
-				</CardSection>
-
-				<CardSection>
-					<Text>Shift</Text>
-					 <Picker selectedValue={this.props.shift}
-					 	onValueChange={day => this.props.handleEmployeeFormUpdate({prop: 'shift', value: day})}
-					 	style={{flex: 1}}
-					 >
-					  {this.daysOfWeek().map(d => <Picker.Item key={d} label={d} value={d} />)}
-					 
-					 </Picker>
-				</CardSection>
-
-				
+				<Employeeform  {...this.props}/>
 				<Button onPressedAction = {this.submitForm.bind(this)} title={'Create'}/>
 			</Card>
 		);
@@ -73,13 +48,7 @@ function mapStateToProps(state){
 }
 
 
-const styles = StyleSheet.create({
-	pickerLabelStyle: {
-		fontSize: 18,
-		paddingLeft: 20
-	}
 
-});
 
 
 export default connect(mapStateToProps, { handleEmployeeFormUpdate, saveEmployeeDetail })(Employeecreate);

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loginUser } from './../actions/index';
 import { getEmployeeList } from './../actions/employee';
 import _ from 'lodash';
+import EmployeeListItem from './EmployeeListItem';
 
 
 class Employeelist extends Component {
@@ -34,6 +35,11 @@ class Employeelist extends Component {
 		 this.dataSource = ds.cloneWithRows(props.employee);
 	}
 
+
+	renderRow(employee){
+		return <EmployeeListItem employee={employee} />;
+	}
+
 	
 
 	
@@ -44,7 +50,7 @@ class Employeelist extends Component {
 			<ListView
 				enableEmptySections
 		        dataSource={this.dataSource}
-		        renderRow={(rowData) => <Text>{rowData.name}</Text>} />
+		        renderRow={this.renderRow} />
 		);
 	}
 }

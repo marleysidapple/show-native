@@ -17,14 +17,23 @@ class Employeelist extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps.employee);
+		if (this.props.employee != nextProps.employee){
+				console.log(nextProps.employee);
+				console.log('with map');
+				_.map(nextProps.employee, (val, id) => console.log(val));
+				//this.setState({ allEmp: nextProps.employee });
+		}
 	}
+
+	
 
 	
 
 	render(){
 		return (
-			<Text>hello</Text>
+			<Text>
+				Hey
+			</Text>
 		);
 	}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import CardSection from './../common/CardSection';
 
 
 class EmployeeListItem extends Component{
@@ -11,9 +12,9 @@ class EmployeeListItem extends Component{
 
 	render(){
 		return(
-			<View>
+			<CardSection>
 				<Text>{this.props.employee.name}</Text>
-			</View>
+			</CardSection>
 
 		);
 	}

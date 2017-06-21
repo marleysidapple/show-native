@@ -14,15 +14,24 @@ class Employeelist extends Component {
 
 	componentWillMount(){
 		this.props.getEmployeeList();
+		this.createDataSource(this.props);
 	}
 
 	componentWillReceiveProps(nextProps){
-		if (this.props.employee != nextProps.employee){
-				console.log(nextProps.employee);
-				console.log('with map');
-				_.map(nextProps.employee, (val, id) => console.log(val));
-				//this.setState({ allEmp: nextProps.employee });
-		}
+		
+		// if (this.props.employee != nextProps.employee){
+		// 		console.log(nextProps.employee);
+		// 		console.log('with map');
+		// 		_.map(nextProps.employee, (val, id) => console.log(val));
+		// 		//this.setState({ allEmp: nextProps.employee });
+		// }
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource(props){
+		//creating a data source
+		 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		 this.dataSource = ds.cloneWithRows(props.employee);
 	}
 
 	
@@ -30,17 +39,24 @@ class Employeelist extends Component {
 	
 
 	render(){
+		console.log(this.props);
 		return (
-			<Text>
-				Hey
-			</Text>
+			<ListView
+				enableEmptySections
+		        dataSource={this.dataSource}
+		        renderRow={(rowData) => <Text>{rowData.name}</Text>} />
 		);
 	}
 }
 
 function mapStateToProps(state){
+	const employeeConvertedToArray = _.map(state.employee_list, (val, id) => {
+		return {...val, id};
+	});
+
 	return {
-		employee: state.employee_list,
+		employee: employeeConvertedToArray,
+		//employee: state.employee_list,
 		//token: state.auth.token,
 		detail: state.auth.user
 	}

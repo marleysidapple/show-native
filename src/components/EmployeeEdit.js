@@ -24,7 +24,8 @@ class EmployeeEdit extends Component {
 
 
 	onButtonPress(){
-		
+		console.log(this.props.name);
+		console.log(this.props.shift);
 	}
 
 	render(){
@@ -41,12 +42,12 @@ class EmployeeEdit extends Component {
 }
 
 function mapStateToProps(state){
-	console.log(state);
-	return {};
+	// console.log(state);
+	// return {};
 	return {
-		name: state.Employeeform.name,
-		phone:state.Employeeform.phone,
-		shift: state.Employeeform.shift
+		name: state.employee.name,
+		phone:state.employee.phone,
+		shift: state.employee.shift
 	}
 }
 

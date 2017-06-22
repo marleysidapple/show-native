@@ -11,7 +11,7 @@ class EmployeeListItem extends Component{
 	}
 
 	onRowPress(){
-		Actions.editEmployee({employee: this.props.employee});
+		Actions.editEmployee({em: this.props.employee});
 	}
 
 

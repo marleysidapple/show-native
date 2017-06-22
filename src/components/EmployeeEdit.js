@@ -5,7 +5,7 @@ import Card from './../common/Card';
 import CardSection from './../common/CardSection';
 import Button from './../common/Button';
 import Employeeform from './Employeeform';
-import { employeeUpdate } from './../actions/employee';
+import { handleEmployeeFormUpdate } from './../actions/employee';
 import Input from './../common/Input';
 import _ from 'lodash';
 
@@ -14,8 +14,9 @@ class EmployeeEdit extends Component {
 
 
 	componentWillMount(){
-		_.each(this.props.employee, (val, props) => {
-			this.props.employeeUpdate({props, val});
+
+		_.each(this.props.em, (value, prop) => {
+			this.props.handleEmployeeFormUpdate({prop, value});
 		});
 		
 	}
@@ -23,8 +24,7 @@ class EmployeeEdit extends Component {
 
 
 	onButtonPress(){
-		console.log(this.props.name);
-		console.log(this.props.shift);
+		
 	}
 
 	render(){
@@ -42,12 +42,13 @@ class EmployeeEdit extends Component {
 
 function mapStateToProps(state){
 	console.log(state);
-	// return {
-	// 	name: state.Employeeform.name,
-	// 	phone:state.Employeeform.phone,
-	// 	shift: state.Employeeform.shift
-	// }
+	return {};
+	return {
+		name: state.Employeeform.name,
+		phone:state.Employeeform.phone,
+		shift: state.Employeeform.shift
+	}
 }
 
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeEdit);
+export default connect(mapStateToProps, { handleEmployeeFormUpdate })(EmployeeEdit);

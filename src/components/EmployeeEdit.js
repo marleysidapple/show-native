@@ -5,9 +5,10 @@ import Card from './../common/Card';
 import CardSection from './../common/CardSection';
 import Button from './../common/Button';
 import Employeeform from './Employeeform';
-import { handleEmployeeFormUpdate } from './../actions/employee';
+import { handleEmployeeFormUpdate, updateEmployeeDetail } from './../actions/employee';
 import Input from './../common/Input';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 
 class EmployeeEdit extends Component {
@@ -21,35 +22,34 @@ class EmployeeEdit extends Component {
 		
 	}
 
-
-
 	onButtonPress(){
-		console.log(this.props.name);
-		console.log(this.props.shift);
+		const updatedDetail = {
+			name: this.props.name,
+			phone: this.props.phone,
+			shift: this.props.shift,
+		}
+
+		this.props.updateEmployeeDetail(updatedDetail, this.props.em_id);
 	}
 
 	render(){
 		return(
 			<Card>
 				<Employeeform />
-				<Button onPress={this.onButtonPress.bind(this)} title={'Save Changes'} />
+				<Button onPressedAction={this.onButtonPress.bind(this)} title={'Save Changes'} />
 			</Card>
-
 		);
 	}
-
-
 }
 
 function mapStateToProps(state){
-	// console.log(state);
-	// return {};
 	return {
 		name: state.employee.name,
 		phone:state.employee.phone,
-		shift: state.employee.shift
+		shift: state.employee.shift,
+		em_id: state.employee.id
 	}
 }
 
 
-export default connect(mapStateToProps, { handleEmployeeFormUpdate })(EmployeeEdit);
+export default connect(mapStateToProps, { handleEmployeeFormUpdate, updateEmployeeDetail })(EmployeeEdit);

@@ -1,4 +1,8 @@
-import { HANDLE_EMPLOYEE_FORM_UPDATE, EMPLOYEE_CREATE_SUCCESS, FETCH_EMPLOYEE_LIST } from './types';
+import { 
+	HANDLE_EMPLOYEE_FORM_UPDATE, 
+	EMPLOYEE_CREATE_SUCCESS, 
+	FETCH_EMPLOYEE_LIST,
+	UPDATE_EMPLOYEE_DETAIL } from './types';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -9,6 +13,7 @@ export const handleEmployeeFormUpdate = ({ prop, value}) => {
 		payload: { prop, value}
 	};
 }
+
 
 export function saveEmployeeDetail(employee){
 	return (dispatch) => {
@@ -37,5 +42,17 @@ export function getEmployeeList(){
 						payload: em.data
 					});
 				});
+	}
+}
+
+
+export function updateEmployeeDetail(employee, em_id){
+	return (dispatch) => {
+		axios.post(`http://localhost:8000/api/v1/employee/update/${em_id}`, employee).then(emp => {
+			dispatch({
+				type: UPDATE_EMPLOYEE_DETAIL,
+				payload: 'employee updated'
+			});
+		});
 	}
 }

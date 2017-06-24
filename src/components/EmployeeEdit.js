@@ -15,8 +15,7 @@ class EmployeeEdit extends Component {
 
 
 	componentWillMount(){
-
-		_.each(this.props.em, (value, prop) => {
+		_.forEach(this.props.em, (value, prop) => {
 			this.props.handleEmployeeFormUpdate({prop, value});
 		});
 		

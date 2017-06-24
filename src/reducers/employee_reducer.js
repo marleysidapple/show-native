@@ -3,7 +3,7 @@ import {
 	EMPLOYEE_CREATE_SUCCESS,
 } from './../actions/types';
 
-const INITIAL_STATE = { name: '', phone: '', shift: '', all: []};
+const INITIAL_STATE = { id: '', name: '', phone: '', shift: ''};
 
 export default function(state=INITIAL_STATE, action){
 	switch(action.type){

@@ -6,6 +6,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
+
 //making action creator dynamic
 export const handleEmployeeFormUpdate = ({ prop, value}) => {
 	return{
@@ -47,6 +48,7 @@ export function getEmployeeList(){
 
 
 export function updateEmployeeDetail(employee, em_id){
+	console.log(em_id);
 	return (dispatch) => {
 		axios.post(`http://localhost:8000/api/v1/employee/update/${em_id}`, employee).then(emp => {
 			dispatch({

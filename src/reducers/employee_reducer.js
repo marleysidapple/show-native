@@ -1,7 +1,8 @@
 import {
 	HANDLE_EMPLOYEE_FORM_UPDATE,
 	EMPLOYEE_CREATE_SUCCESS,
-	CLEAR_EMPLOYEE_FORM
+	CLEAR_EMPLOYEE_FORM,
+	UPDATE_EMPLOYEE_DETAIL
 } from './../actions/types';
 
 const INITIAL_STATE = { id: '', name: '', phone: '', shift: ''};
@@ -19,6 +20,8 @@ export default function(state=INITIAL_STATE, action){
 
 		case CLEAR_EMPLOYEE_FORM:
 			return INITIAL_STATE;
+
+		case UPDATE_EMPLOYEE_DETAIL:
 
 
 		default:

@@ -60,13 +60,17 @@ export function getEmployeeList(){
 }
 
 
-export function updateEmployeeDetail(employee, em_id){
-	console.log(em_id);
+export function updateEmployeeDetail(employeeData, em_id){
+	console.log(employeeData);
 	return (dispatch) => {
-		axios.post(`http://localhost:8000/api/v1/employee/update/${em_id}`, employee).then(emp => {
+		axios.post('http://localhost:8000/api/v1/employee/update/'+em_id, {
+			 name: employeeData.name,
+   			 phone: employeeData.lastName,
+   			 shift: employeeData.shift
+		}).then(emp => {
 			dispatch({
 				type: UPDATE_EMPLOYEE_DETAIL,
-				payload: 'employee updated'
+				payload: emp
 			});
 		});
 	}

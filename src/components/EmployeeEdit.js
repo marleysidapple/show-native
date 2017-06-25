@@ -6,9 +6,10 @@ import CardSection from './../common/CardSection';
 import Button from './../common/Button';
 import Employeeform from './Employeeform';
 import { handleEmployeeFormUpdate, updateEmployeeDetail } from './../actions/employee';
+import Communications from 'react-native-communications';
 import Input from './../common/Input';
 import _ from 'lodash';
-import { Actions } from 'react-native-router-flux';
+
 
 
 class EmployeeEdit extends Component {
@@ -21,13 +22,20 @@ class EmployeeEdit extends Component {
 		
 	}
 
+	onTextPress(){
+		Communications.text(this.props.phone, `Your shift is on ${this.props.shift}`);
+	}
+
+	onFirePress(){
+		
+	}
+
 	onButtonPress(){
 		const updatedDetail = {
 			name: this.props.name,
 			phone: this.props.phone,
 			shift: this.props.shift,
 		};
-
 		this.props.updateEmployeeDetail(updatedDetail, this.props.em_id);
 	}
 
@@ -36,6 +44,8 @@ class EmployeeEdit extends Component {
 			<Card>
 				<Employeeform />
 				<Button onPressedAction={this.onButtonPress.bind(this)} title={'Save Changes'} />
+				<Button onPressedAction={this.onTextPress.bind(this)} title={'Text Schedule'} />
+				<Button onPressedAction={this.onFirePress.bind(this)} title={'Fire Employee'} />
 			</Card>
 		);
 	}

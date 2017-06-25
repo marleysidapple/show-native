@@ -67,6 +67,7 @@ export function updateEmployeeDetail(employeeData, em_id){
 				type: UPDATE_EMPLOYEE_DETAIL,
 				payload: 'success'
 			});
+			Actions.employeeList({type: 'reset'});
 		});
 	}
 }

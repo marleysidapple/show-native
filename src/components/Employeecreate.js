@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Picker, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { handleEmployeeFormUpdate, saveEmployeeDetail } from './../actions/employee';
+import { handleEmployeeFormUpdate, saveEmployeeDetail, resetFormField } from './../actions/employee';
 import Card from './../common/Card';
 import CardSection from './../common/CardSection';
 import Employeeform from './Employeeform';
@@ -11,6 +11,11 @@ import Button from './../common/Button';
 
 
 class Employeecreate extends Component{
+
+
+	componentWillMount(){
+		this.props.resetFormField();
+	}
 
 	submitForm(){
 		const employee = {
@@ -51,4 +56,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, { handleEmployeeFormUpdate, saveEmployeeDetail })(Employeecreate);
+export default connect(mapStateToProps, { handleEmployeeFormUpdate, saveEmployeeDetail, resetFormField })(Employeecreate);

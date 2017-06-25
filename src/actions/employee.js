@@ -2,7 +2,9 @@ import {
 	HANDLE_EMPLOYEE_FORM_UPDATE, 
 	EMPLOYEE_CREATE_SUCCESS, 
 	FETCH_EMPLOYEE_LIST,
-	UPDATE_EMPLOYEE_DETAIL } from './types';
+	UPDATE_EMPLOYEE_DETAIL,
+	CLEAR_EMPLOYEE_FORM
+	 } from './types';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -14,6 +16,17 @@ export const handleEmployeeFormUpdate = ({ prop, value}) => {
 		payload: { prop, value}
 	};
 }
+
+
+export function resetFormField(){
+	return{
+		type: CLEAR_EMPLOYEE_FORM,
+		payload: null
+	}
+}
+
+
+
 
 
 export function saveEmployeeDetail(employee){

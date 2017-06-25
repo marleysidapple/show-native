@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import Card from './../common/Card';
+import Confirm from './../common/Confirm';
 import CardSection from './../common/CardSection';
 import Button from './../common/Button';
 import Employeeform from './Employeeform';
@@ -14,6 +15,12 @@ import _ from 'lodash';
 
 class EmployeeEdit extends Component {
 
+state = { showModal: false};
+
+	constructor(){
+		super();
+		
+	}
 
 	componentWillMount(){
 		_.forEach(this.props.em, (value, prop) => {
@@ -27,8 +34,12 @@ class EmployeeEdit extends Component {
 	}
 
 	onFirePress(){
-		
+		this.setState({ showModal: !this.state.showModal });
 	}
+
+	 onDecline() {
+	    this.setState({ showModal: false });
+	  }
 
 	onButtonPress(){
 		const updatedDetail = {
@@ -39,6 +50,10 @@ class EmployeeEdit extends Component {
 		this.props.updateEmployeeDetail(updatedDetail, this.props.em_id);
 	}
 
+	onDecline() {
+    	this.setState({ showModal: false });
+  	}
+
 	render(){
 		return(
 			<Card>
@@ -46,6 +61,14 @@ class EmployeeEdit extends Component {
 				<Button onPressedAction={this.onButtonPress.bind(this)} title={'Save Changes'} />
 				<Button onPressedAction={this.onTextPress.bind(this)} title={'Text Schedule'} />
 				<Button onPressedAction={this.onFirePress.bind(this)} title={'Fire Employee'} />
+
+				<Confirm
+					 visible={this.state.showModal}
+			         onAccept={this.onAccept.bind(this)}
+			         onDecline={this.onDecline.bind(this)}
+				>
+					Are you sure?
+				</Confirm>
 			</Card>
 		);
 	}

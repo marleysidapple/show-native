@@ -23,7 +23,6 @@ class EmployeeEdit extends Component {
 
 	onButtonPress(){
 		const updatedDetail = {
-			id: this.props.id,
 			name: this.props.name,
 			phone: this.props.phone,
 			shift: this.props.shift,
@@ -47,6 +46,7 @@ function mapStateToProps(state){
 		name: state.employee.name,
 		phone:state.employee.phone,
 		shift: state.employee.shift,
+		em_id: state.employee.id
 	}
 }
 

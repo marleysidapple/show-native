@@ -55,8 +55,8 @@ class Employeelist extends Component {
 }
 
 function mapStateToProps(state){
-	const employeeConvertedToArray = _.map(state.employee_list, (val, id) => {
-		return {...val, id};
+	const employeeConvertedToArray = _.map(state.employee_list, (val, ls) => {
+		return {...val, ls};
 	});
 
 	return {

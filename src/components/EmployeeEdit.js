@@ -33,13 +33,19 @@ state = { showModal: false};
 		Communications.text(this.props.phone, `Your shift is on ${this.props.shift}`);
 	}
 
+	 onAccept() {
+   		// const { uid } = this.props.employee;
+        // this.props.employeeDelete({ uid });
+  }
+
+
 	onFirePress(){
 		this.setState({ showModal: !this.state.showModal });
 	}
 
 	 onDecline() {
 	    this.setState({ showModal: false });
-	  }
+	 }
 
 	onButtonPress(){
 		const updatedDetail = {
@@ -49,10 +55,6 @@ state = { showModal: false};
 		};
 		this.props.updateEmployeeDetail(updatedDetail, this.props.em_id);
 	}
-
-	onDecline() {
-    	this.setState({ showModal: false });
-  	}
 
 	render(){
 		return(

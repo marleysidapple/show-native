@@ -30,6 +30,7 @@ const styles = {
 
 	buttonText: {
 		alignSelf: 'center',
+		color: '#000'
 	}
 }
 

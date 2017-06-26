@@ -23,8 +23,10 @@ class Confirm extends Component {
 					<CardSection style={styles.cardSectionStyle}>
 						<Text style={styles.textStyle}>{this.props.children}</Text>
 					</CardSection>
-					<Button onPressedAction={this.props.onAccept}>Confirm</Button>
-					<Button onPressedAction={this.props.onDecline}>Cancel</Button>
+
+
+						<Button  onPressedAction={this.props.onAccept}>Confirm</Button>
+						<Button  onPressedAction={this.props.onDecline}>Cancel</Button>
 				</View>
 			</Modal>
 		);
@@ -46,9 +48,10 @@ const styles = {
 	 	backgroundColor: 'rgba(0, 0, 0, 0.75)',
 	    position: 'relative',
 	    flex: 1,
-	    justifyContent: 'center'
+	 },
 
-	 }
+
+	
 
 };
 
